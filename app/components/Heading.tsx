@@ -3,8 +3,8 @@
 import React from "react";
 
 interface HeadingProps {
-  title: string;
-  subtitle?: string;
+  title: string | undefined;
+  subtitle?: string | undefined;
   center?: boolean;
 }
 
