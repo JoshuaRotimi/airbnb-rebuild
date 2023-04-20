@@ -30,7 +30,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     if (!currentUser) {
       return loginModal.onOpen();
     }
-  }, [loginModal, currentUser]);
+    return rentModal.onOpen();
+  }, [loginModal, currentUser, rentModal]);
 
   return (
     <div className="relative">
@@ -40,7 +41,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           className="hidden md:block text-sm font-semibold py-3 px-4
                      rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
-          Airbnb your home
+          Holiday.com your home
         </div>
         <div
           onClick={toggle}
@@ -48,6 +49,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                  gap-3 rounded-full cursor-pointer hover:shadow-md transition"
         >
           <AiOutlineMenu />
+          <p>{currentUser && currentUser?.name}</p>
           <div className="hidden md:block">
             <Avatar src={currentUser?.image} />
           </div>
@@ -77,7 +79,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   onClick={() => router.push("/properties")}
                   label={"My Properties"}
                 />
-                <MenuItem onClick={rentModal.onOpen} label={"Airbnb my home"} />
+                <MenuItem onClick={rentModal.onOpen} label={"My home"} />
                 <MenuItem onClick={() => signOut()} label={"Logout"} />
               </>
             ) : (
