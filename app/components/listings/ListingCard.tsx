@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
+import { CldImage } from "next-cloudinary";
 
 import useCountries from "@/app/hooks/useCountries";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
@@ -82,7 +83,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             rounded-xl
           "
         >
-          <Image
+          <CldImage
             fill
             className="
               object-cover
@@ -93,6 +94,10 @@ const ListingCard: React.FC<ListingCardProps> = ({
             "
             src={data.imageSrc}
             alt="Listing"
+            // sizes="(min-width: 480px) 50vw,
+            //           (min-width: 728px) 33vw,
+            //           (min-width: 976px) 25vw,
+            //           100vw"
           />
           <div
             className="
